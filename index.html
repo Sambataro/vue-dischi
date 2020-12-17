@@ -19,17 +19,16 @@
         <div class="select">
           <label for="select">Filtra per genere</label>
           <select
+          @change="genreSelected()"
           v-model="genreSelection"
           name="option">
-          <option v-for="key in genre">{{ key }}</option>
-
+          <option v-for="genre in genres">{{ genre }}</option>
           </select>
         </div>
       </header>
-
       <main>
-
-        <div class="cd" v-for="disc in discs">
+        <div class="cd" v-for="(disc, i) in discs"
+            v-if="discs[i].toggle">
           <img :src=disc.poster :alt=disc.title>
           <div class="info">
             <h2>{{ disc.title }}</h2>
@@ -38,8 +37,6 @@
           </div>
         </div>
       </main>
-
-
     </div>
 
 
