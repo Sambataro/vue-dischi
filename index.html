@@ -16,9 +16,19 @@
 
       <header>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0QwjSeZvgA57NRJ9AotM5No0mjK7YZKZbNQ&usqp=CAU" alt="">
+        <div class="select">
+          <label for="select">Filtra per genere</label>
+          <select
+          v-model="genreSelection"
+          name="option">
+          <option v-for="key in genre">{{ key }}</option>
+
+          </select>
+        </div>
       </header>
 
       <main>
+
         <div class="cd" v-for="disc in discs">
           <img :src=disc.poster :alt=disc.title>
           <div class="info">

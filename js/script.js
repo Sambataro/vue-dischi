@@ -12,6 +12,15 @@ var app = new Vue (
     el: "#app",
     data: {
       discs: [],
+      genre:[],
+      genreSelection: "",
+
+    },
+
+    methods: {
+
+      // creare funzioni per cambiare genere
+      // al click sulla select devo filtrare le schede disc per il genere selezionato, partendo di defult con tutto visibile
 
     },
 
@@ -20,7 +29,18 @@ var app = new Vue (
         .get('https://flynn.boolean.careers/exercises/api/array/music')
         .then( (result) => {
           this.discs = result.data.response;
-          console.log(this.discs);
+
+          // con un ciclo forEach entro nell'array discs,
+          // con includes verifico se disc.genre non è presente nell'array genre, se non è incluso eseguo il push
+          this.discs.forEach(
+            (item) => {
+              if (!this.genre.includes(item.genre)) {
+                this.genre.push(item.genre);
+                console.log(this.genre);
+              }
+            }
+          );
+
           }
         );
       }
