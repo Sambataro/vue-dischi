@@ -22,6 +22,7 @@
           @change="genreSelected()"
           v-model="genreSelection"
           name="option">
+          <option value="">Tutti i generi</option>
           <option v-for="genre in genres">{{ genre }}</option>
           </select>
         </div>
