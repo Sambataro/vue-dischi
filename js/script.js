@@ -18,8 +18,6 @@ var app = new Vue (
     },
 
     methods: {
-      // BONUS: Creare una select con tutti i generi dei dischi. In base a
-      // cosa scegliamo nella select, vedremo i corrispondenti cd.
       genreSelected: function() {
          this.discs.forEach(
           (item) => {
@@ -46,9 +44,16 @@ var app = new Vue (
           this.discs.forEach(
             (item) => {
               item.toggle = true;
-              console.log(this.discs);
             }
+
           );
+
+          this.discs.sort(function( a, b){
+            return a.year - b.year
+          }
+          );
+
+
           // con un ciclo forEach entro nell'array discs,
           // con includes verifico se disc.genre non è presente nell'array genre, se non è incluso eseguo il push
           this.discs.forEach(
